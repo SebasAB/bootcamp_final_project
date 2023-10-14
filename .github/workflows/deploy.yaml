@@ -24,4 +24,20 @@ jobs:
           # Build and push your Docker image here
           docker build -t sebasab/bootcamp_devops:latest .
           docker push sebasab/bootcamp_devops:latest
+          
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: AKIAXUGAY26IXIWBJS5U
+          aws-secret-access-key: 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
+          aws-region: us-east-1
+
+      - name: Configure Kubeconfig
+        run: aws eks update-kubeconfig --name eks-grupo0 --alias eks-grupo5 --region us-east-1
+
+      - name: Deploy to Kubernetes
+        run: |
+        kubectl apply -f deployment.yaml
+        kubectl apply -f service.yaml
+
 
