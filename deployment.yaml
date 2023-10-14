@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: to-do-app-deployment  # Cambiado el nombre a "to-do-app"
+  namespace: group5
 spec:
   replicas: 3
   selector:
