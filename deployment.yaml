@@ -1,19 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: to-do-app-deployment  # Cambiado el nombre a "to-do-app"
+  name: my-react-app-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: to-do-app  # Cambiado el nombre a "to-do-app"
+      app: my-react-app
   template:
     metadata:
       labels:
-        app: to-do-app  # Cambiado el nombre a "to-do-app"
+        app: my-react-app
     spec:
       containers:
-        - name: to-do-container  # Cambiado el nombre a "to-do-container"
-          image: sebasab/bootcamp_devops:etiqueta  # Cambiada la imagen a "sebasab/bootcamp_devops"
+        - name: my-react-container
+          image: docker.io/usuario/nombre-de-imagen:etiqueta
           ports:
-            - containerPort: 3000
+            - containerPort: 3000  # Cambiado el puerto al 3000
+          resources:
+            requests:
+              memory: "256Mi"  # Solicitud mínima de memoria
+              cpu: "250m"      # Solicitud mínima de CPU
+            limits:
+              memory: "512Mi"  # Límite máximo de memoria
+              cpu: "500m"      # Límite máximo de CPU
