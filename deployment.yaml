@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: to-do-container  # Cambiado el nombre a "to-do-container"
-          image: sebasab/bootcamp_devops:etiqueta  # Cambiada la imagen a "sebasab/bootcamp_devops"
+          image: sebasab/bootcamp_devops:latest  # Cambiada la imagen a "sebasab/bootcamp_devops"
           ports:
             - containerPort: 3000
