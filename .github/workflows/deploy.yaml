@@ -35,6 +35,11 @@ jobs:
       - name: Configure Kubeconfig
         run: aws eks update-kubeconfig --name eks-grupo0 --alias eks-grupo5 --region us-east-1
 
+      - name: Delete Previous Deployments and Services
+        run: |
+          kubectl delete -f deployment.yaml -n group5
+          kubectl delete services to-do-app-service -n group5   
+
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f deployment.yaml | kubectl apply -f service.yaml
